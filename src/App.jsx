@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import {motion} from 'framer-motion';
 import { DateTime } from "luxon";
 import './App.css';
+import Greeting from './components/GreetingSection';
+import WeatherWidget from "./components/WeatherWidget";
 console.log("✅ App component loaded");
 
 const App = () => {
@@ -45,11 +47,11 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-sky-50 to-emerald-100 font-sans text-gray-800">
+    <div className="bg-background min-h-screen text-gray-300 font-sans px-6 py-12">
       <header className="p-4 shadow-md bg-white/80 backdrop-blur sticky top-0 z-50">
         <nav className="max-w-6xl mx-auto flex justify-between items-center">
           <motion.h1 initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="text-2xl font-extrabold text-emerald-700 cursor-pointer tracking-tight" onClick={() => scrollToSection('hero')}>
-            SmallBiz Automate
+            Atharvionics Ltd
           </motion.h1>
           <ul className="flex space-x-6 text-emerald-700 font-medium">
             {['Home', 'Problem', 'How It Works', 'Who It’s For', 'Examples', 'Testimonials', 'Contact'].map((label, index) => (
@@ -58,7 +60,10 @@ const App = () => {
           </ul>
         </nav>
       </header>
-
+         
+         <div className="min-h-screen bg-background px-6 py-12 items-center text-center">
+         <Greeting /> <WeatherWidget />
+        
       <main className="px-4 py-14 max-w-6xl mx-auto space-y-24">
         <section id="hero" className="text-center">
           <motion.h2 className="text-4xl md:text-5xl font-extrabold text-emerald-800 mb-4 leading-tight">
@@ -134,12 +139,13 @@ const App = () => {
       </main>
 
       <footer className="mt-10 py-6 text-center text-sm text-gray-600">
-        <p className="text-gray-700 font-medium">© 2025 SmallBiz Automate. All rights reserved.</p>
+        <p className="text-gray-700 font-medium">© 2025 Atharvionics Ltd. All rights reserved.</p>
         {weather && (
           <p className="text-xs text-gray-500 mt-1">{timezoneMessage} from {weather.city} – {weather.temp}°C, {weather.desc}</p>
         )}
       </footer>
     </div>
+     </div>
   );
 };
 
